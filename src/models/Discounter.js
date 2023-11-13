@@ -1,4 +1,6 @@
-import { BADGES } from '../utils/constants/string.js';
+import MESSAGE from '../utils/constants/message.js';
+import NUMBER from '../utils/constants/number.js';
+import { BADGES, SYMBOLS } from '../utils/constants/string.js';
 import ComplimentaryBenefit from './benefits/ComplimentaryBenefit.js';
 import DDayBenefit from './benefits/DDayBenefit.js';
 import SpecialDayBenefit from './benefits/SpecialDayBenefit.js';
@@ -15,12 +17,12 @@ class Discounter {
   ];
 
   #result = {
-    gift: '없음',
+    gifts: [],
     totalPriceBeforeDiscount: 0,
     totalBenefitAmount: 0,
     expectedTotalPrice: 0,
     appliedBenefits: [],
-    eventBadge: '없음',
+    eventBadge: MESSAGE.none,
   };
 
   constructor(reservation) {
@@ -28,6 +30,15 @@ class Discounter {
   }
 
   applyAllBenefits(reservation) {
+    if (this.#result.totalPriceBeforeDiscount < NUMBER.benefitThreshold) {
+      return;
+    }
+    this.#calculateDiscountResult(reservation);
+    this.#setEventBadge();
+    this.#setGiftResult();
+  }
+
+  #calculateDiscountResult(reservation) {
     const benefitsApplied = this.#benefits.map(item => item.apply(reservation));
     this.#result.appliedBenefits = benefitsApplied.filter(
       item => item.isApplied,
@@ -35,8 +46,6 @@ class Discounter {
     this.#result.totalBenefitAmount = this.#sumBenefitAmount();
     this.#result.expectedTotalPrice =
       this.#result.totalPriceBeforeDiscount + this.#result.totalBenefitAmount;
-    this.#setEventBadge();
-    this.#setGiftResult();
   }
 
   #sumBenefitAmount() {
@@ -48,14 +57,27 @@ class Discounter {
   }
 
   #setGiftResult() {
-    const complimentaryBenefit = this.#result.appliedBenefits.find(
+    const complimentaryBenefits = this.#result.appliedBenefits.filter(
       benefit => benefit.giftItem,
     );
+    const gifts = this.#collectAllGiftItems(complimentaryBenefits);
+    this.#result.gifts = gifts;
+    const totalGiftPrice = this.#calculateTotalGiftPrice(complimentaryBenefits);
+    this.#result.totalBenefitAmount -= totalGiftPrice;
+  }
 
-    if (complimentaryBenefit) {
-      this.#result.gift = `${complimentaryBenefit.giftItem.name} ${complimentaryBenefit.giftCount}개`;
-      this.#result.totalBenefitAmount -= complimentaryBenefit.giftItem.price;
-    }
+  #collectAllGiftItems(complimentaryBenefits) {
+    return complimentaryBenefits.map(item => [
+      item.giftItem.name,
+      item.giftCount,
+    ]);
+  }
+
+  #calculateTotalGiftPrice(complimentaryBenefits) {
+    return complimentaryBenefits.reduce(
+      (total, current) => total + current.giftItem.price * current.giftCount,
+      0,
+    );
   }
 
   #setEventBadge() {

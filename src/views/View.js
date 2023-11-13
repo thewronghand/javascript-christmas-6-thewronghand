@@ -61,21 +61,26 @@ class View {
   }
 
   printPromotionResult(result) {
-    this.#printGiftMenu(result.gift);
+    this.#printGiftMenu(result.gifts);
     this.#printBenefitDetails(result.appliedBenefits);
     this.#printTotalBenefitAmount(result.totalBenefitAmount);
     this.#printExpectedTotalPrice(result.expectedTotalPrice);
     this.#printEventBadge(result.eventBadge);
   }
 
-  #printGiftMenu(gift) {
+  #printGiftMenu(gifts) {
     this.#outputView.print(MESSAGE.header.complimentaryMenu);
-    this.#outputView.print(gift + SYMBOLS.newLine);
+    const giftsMessage = gifts.length
+      ? gifts
+          .map(([menuName, count]) => MESSAGE.format.menu(menuName, count))
+          .join(SYMBOLS.newLine)
+      : MESSAGE.none;
+    this.#outputView.print(giftsMessage + SYMBOLS.newLine);
   }
 
   #parseBenefitDetailsMessage(appliedBenefits) {
     if (appliedBenefits.length === 0) {
-      return '없음';
+      return MESSAGE.none;
     }
     return appliedBenefits
       .map(item => `${item.title}: ${MESSAGE.format.price(item.benefitAmount)}`)

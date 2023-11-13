@@ -34,6 +34,7 @@ const MESSAGE = {
   header,
   read,
   format,
+  none: '없음',
 };
 
 export default MESSAGE;

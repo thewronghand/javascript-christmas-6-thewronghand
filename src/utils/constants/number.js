@@ -1,3 +1,6 @@
-const PROMOTION_THRESHOLD = 10000;
+const NUMBER = Object.freeze({
+  benefitThreshold: 10000,
+  maxMenuCount: 20,
+});
 
-export default PROMOTION_THRESHOLD;
+export default NUMBER;
