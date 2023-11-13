@@ -2,6 +2,11 @@ import DATE from '../utils/constants/date.js';
 import PromotionServiceValidator from '../utils/validators/PromotionServiceValidator.js';
 import Discounter from './Discounter.js';
 import Menu from './Menu.js';
+import ComplimentaryBenefit from './benefits/ComplimentaryBenefit.js';
+import DDayBenefit from './benefits/DDayBenefit.js';
+import SpecialDayBenefit from './benefits/SpecialDayBenefit.js';
+import WeekdayBenefit from './benefits/WeekdayBenefit.js';
+import WeekendBenefit from './benefits/WeekendBenefit.js';
 
 class PromotionService {
   #reservation = {
@@ -11,6 +16,14 @@ class PromotionService {
   };
 
   #discounter;
+
+  #benefits = [
+    new DDayBenefit(),
+    new WeekdayBenefit(),
+    new WeekendBenefit(),
+    new SpecialDayBenefit(),
+    new ComplimentaryBenefit(),
+  ];
 
   #validateReservationDate(date) {
     PromotionServiceValidator.validateDate(date);
@@ -43,7 +56,7 @@ class PromotionService {
   }
 
   applyDiscounter() {
-    this.#discounter = new Discounter(this.#reservation);
+    this.#discounter = new Discounter(this.#reservation, this.#benefits);
     this.#discounter.applyAllBenefits(this.#reservation);
     return this.#discounter.getDiscountResult();
   }
