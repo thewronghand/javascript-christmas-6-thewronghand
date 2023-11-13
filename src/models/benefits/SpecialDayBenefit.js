@@ -1,4 +1,3 @@
-import PROMOTION_THRESHOLD from '../../utils/constants/number.js';
 import Benefit from './Benefit.js';
 
 class SpecialDayBenefit extends Benefit {
@@ -12,21 +11,20 @@ class SpecialDayBenefit extends Benefit {
     title: SpecialDayBenefit.title,
     isApplied: false,
     benefitAmount: 0,
+    discountAmount: 0,
   };
 
-  #checkBenefitAvailability(reservation) {
-    return reservation.totalPrice >= PROMOTION_THRESHOLD;
-  }
-
   apply(reservation) {
-    if (
-      this.#checkBenefitAvailability(reservation) &&
-      SpecialDayBenefit.specialDays.includes(reservation.date.getDate())
-    ) {
-      this.#result.isApplied = true;
-      this.#result.benefitAmount += SpecialDayBenefit.discountIncrement;
+    if (SpecialDayBenefit.specialDays.includes(reservation.date.getDate())) {
+      this.#updateResult();
     }
     return this.#result;
+  }
+
+  #updateResult() {
+    this.#result.isApplied = true;
+    this.#result.benefitAmount += SpecialDayBenefit.discountIncrement;
+    this.#result.discountAmount = this.#result.benefitAmount;
   }
 }
 

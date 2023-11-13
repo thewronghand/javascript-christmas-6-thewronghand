@@ -1,4 +1,3 @@
-import PROMOTION_THRESHOLD from '../../utils/constants/number.js';
 import { MENU } from '../../utils/constants/string.js';
 import Benefit from './Benefit.js';
 
@@ -19,6 +18,7 @@ class ComplimentaryBenefit extends Benefit {
     title: ComplimentaryBenefit.title,
     isApplied: false,
     benefitAmount: 0,
+    discountAmount: 0,
     giftItem: undefined,
     giftCount: 0,
   };

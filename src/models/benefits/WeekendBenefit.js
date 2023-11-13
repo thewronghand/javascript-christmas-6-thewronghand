@@ -1,4 +1,4 @@
-import PROMOTION_THRESHOLD from '../../utils/constants/number.js';
+import { MENU } from '../../utils/constants/string.js';
 import Benefit from './Benefit.js';
 
 class WeekendBenefit extends Benefit {
@@ -6,7 +6,7 @@ class WeekendBenefit extends Benefit {
 
   static discountIncrement = -2023;
 
-  static discountCategory = '메인';
+  static discountCategory = MENU.menuCategories.main;
 
   static weekends = [5, 6];
 
@@ -14,6 +14,7 @@ class WeekendBenefit extends Benefit {
     title: WeekendBenefit.title,
     isApplied: false,
     benefitAmount: 0,
+    discountAmount: 0,
   };
 
   #isWeekday(date) {
@@ -31,19 +32,17 @@ class WeekendBenefit extends Benefit {
     );
   }
 
-  #checkBenefitAvailability(reservation) {
-    return reservation.totalPrice >= PROMOTION_THRESHOLD;
-  }
-
   apply(reservation) {
-    if (
-      this.#checkBenefitAvailability(reservation) &&
-      this.#isWeekday(reservation.date)
-    ) {
-      this.#result.isApplied = true;
-      this.#result.benefitAmount = this.#calculateDiscount(reservation.orders);
+    if (this.#isWeekday(reservation.date)) {
+      this.#updateResult(reservation);
     }
     return this.#result;
+  }
+
+  #updateResult(reservation) {
+    this.#result.isApplied = true;
+    this.#result.benefitAmount = this.#calculateDiscount(reservation.orders);
+    this.#result.discountAmount = this.#result.benefitAmount;
   }
 }
 
