@@ -1,5 +1,6 @@
 import CustomError from '../../errors/CustomError.js';
 import ERROR from '../constants/error.js';
+import { SYMBOLS } from '../constants/string.js';
 
 function validateInputLength(input, error) {
   if (!input.length) {
@@ -69,7 +70,7 @@ const InputViewValidator = {
 
   areValidMultipleStrings(input) {
     validateInputLength(input, ERROR.invalidOrder);
-    const inputArray = input.split(',');
+    const inputArray = input.split(SYMBOLS.inputSeparator);
     inputArray.forEach(item => {
       validateOrderPattern(item);
       validateSingleOrder(item);
