@@ -5,7 +5,7 @@ import Menu from './Menu.js';
 
 class PromotionService {
   #reservation = {
-    date: '',
+    date: new Date(DATE.year, DATE.month, 1),
     orders: [],
     totalPrice: 0,
   };
