@@ -15,6 +15,7 @@ const PromotionServiceValidator = {
       throw CustomError.promotionService(ERROR.invalidOrder);
     }
   },
+
   validateTotalOrderCount(order) {
     const totalCount = order.reduce(
       (total, [_menuName, count]) => total + count,
