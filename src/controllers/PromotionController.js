@@ -30,7 +30,7 @@ class PromotionController {
   async #ensureOrdersInput() {
     await this.#retryOnFailure(async () => {
       const orders = await this.#view.readOrders();
-      this.#promotionService.setReservationOrders(orders);
+      this.#promotionService.updateReservationWithOrders(orders);
     });
   }
 

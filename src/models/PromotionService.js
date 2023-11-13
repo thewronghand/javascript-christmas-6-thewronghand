@@ -39,7 +39,7 @@ class PromotionService {
     PromotionServiceValidator.validateTotalOrderCount(orders);
   }
 
-  setReservationOrders(orders) {
+  updateReservationWithOrders(orders) {
     this.#validateReservationOrders(orders);
     this.#reservation.orders = this.#setUpOrdersFromInput(orders);
     this.#updateTotalPrice();
