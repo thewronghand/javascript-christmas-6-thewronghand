@@ -23,7 +23,7 @@ class PromotionService {
 
   #validateReservationOrders(orders) {
     PromotionServiceValidator.validateOrderNameDuplicate(orders);
-    PromotionServiceValidator.validateOrderTotalCount(orders);
+    PromotionServiceValidator.validateTotalOrderCount(orders);
   }
 
   setReservationOrders(orders) {
