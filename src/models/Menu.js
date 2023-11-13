@@ -17,8 +17,12 @@ class Menu {
     MenuValidator.validateMenuCount(count);
   }
 
-  getMenuMessage() {
-    return `${this.#name} ${this.#count}개`;
+  getMenuInfo() {
+    const info = {
+      menuName: this.#name,
+      count: this.#count,
+    };
+    return info;
   }
 
   getPrice() {

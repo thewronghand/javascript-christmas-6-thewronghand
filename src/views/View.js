@@ -50,7 +50,10 @@ class View {
   printOrders(orders) {
     this.#outputView.print(MESSAGE.header.orders);
     const orderMessage = orders
-      .map(item => item.getMenuMessage())
+      .map(item => {
+        const info = item.getMenuInfo();
+        return MESSAGE.format.menu(info);
+      })
       .join(SYMBOLS.newLine);
     this.#outputView.print(orderMessage + SYMBOLS.newLine);
   }
