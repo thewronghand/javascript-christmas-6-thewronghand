@@ -40,9 +40,9 @@ class WeekdayBenefit extends Benefit {
   }
 
   #updateResult(reservation) {
-    this.#result.isApplied = true;
     this.#result.benefitAmount = this.#calculateDiscount(reservation.orders);
     this.#result.discountAmount = this.#result.benefitAmount;
+    this.#result.isApplied = this.#result.benefitAmount > 0;
   }
 }
 
