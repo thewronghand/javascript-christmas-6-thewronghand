@@ -1,0 +1,3 @@
+const PROMOTION_THRESHOLD = 10000;
+
+export default PROMOTION_THRESHOLD;
