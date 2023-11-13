@@ -4,7 +4,7 @@ import Benefit from './Benefit.js';
 class WeekdayBenefit extends Benefit {
   static title = '평일 할인';
 
-  static discountIncrement = -2023;
+  static discountIncrement = 2023;
 
   static discountCategory = MENU.menuCategories.dessert;
 

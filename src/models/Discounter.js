@@ -47,7 +47,7 @@ class Discounter {
     this.#result.totalBenefitAmount = this.#sumBenefitAmount();
     this.#result.totalDiscountAmount = this.#sumDiscountAmount();
     this.#result.expectedTotalPrice =
-      this.#result.totalPriceBeforeDiscount + this.#result.totalDiscountAmount;
+      this.#result.totalPriceBeforeDiscount - this.#result.totalDiscountAmount;
   }
 
   #sumBenefitAmount() {
@@ -82,9 +82,9 @@ class Discounter {
   }
 
   #setEventBadge() {
-    const totalBenefitAbsolute = Math.abs(this.#result.totalBenefitAmount);
     const badge = BADGES.find(
-      ({ threshold, _badgeName }) => totalBenefitAbsolute >= threshold,
+      ({ threshold, _badgeName }) =>
+        this.#result.totalBenefitAmount >= threshold,
     );
     this.#result.eventBadge = badge.badgeName;
   }

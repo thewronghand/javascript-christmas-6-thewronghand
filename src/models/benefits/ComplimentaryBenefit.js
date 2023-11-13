@@ -10,7 +10,7 @@ class ComplimentaryBenefit extends Benefit {
     item => item.name === ComplimentaryBenefit.giftItemName,
   );
 
-  static discountIncrement = -ComplimentaryBenefit.giftItem.price;
+  static discountIncrement = ComplimentaryBenefit.giftItem.price;
 
   static benefitThreshold = 120000;
 

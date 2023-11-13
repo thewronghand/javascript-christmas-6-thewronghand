@@ -4,9 +4,9 @@ import Benefit from './Benefit.js';
 class DDayBenefit extends Benefit {
   static title = '크리스마스 디데이 할인';
 
-  static initialDiscount = -1000;
+  static initialDiscount = 1000;
 
-  static incrementPerDay = -100;
+  static incrementPerDay = 100;
 
   static msPerDay = 24 * 60 * 60 * 1000;
 

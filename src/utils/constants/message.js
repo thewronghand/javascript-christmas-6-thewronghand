@@ -2,6 +2,7 @@ const format = Object.freeze({
   menu: (menuName, count) => `${menuName} ${count}개`,
   number: number => number.toLocaleString('ko-KR'),
   price: number => `${format.number(number)}원`,
+  discount: number => `-${format.price(number)}`,
   date: date => {
     const month = date.getMonth() + 1;
     const day = date.getDate();

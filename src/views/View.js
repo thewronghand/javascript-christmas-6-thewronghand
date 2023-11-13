@@ -83,7 +83,9 @@ class View {
       return MESSAGE.none;
     }
     return appliedBenefits
-      .map(item => `${item.title}: ${MESSAGE.format.price(item.benefitAmount)}`)
+      .map(
+        item => `${item.title}: ${MESSAGE.format.discount(item.benefitAmount)}`,
+      )
       .join(SYMBOLS.newLine);
   }
 
@@ -96,7 +98,7 @@ class View {
   #printTotalBenefitAmount(totalBenefitAmount) {
     this.#outputView.print(MESSAGE.header.totalBenefitAmount);
     this.#outputView.print(
-      MESSAGE.format.price(totalBenefitAmount) + SYMBOLS.newLine,
+      MESSAGE.format.discount(totalBenefitAmount) + SYMBOLS.newLine,
     );
   }
 

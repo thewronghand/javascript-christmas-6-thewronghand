@@ -3,7 +3,7 @@ import Benefit from './Benefit.js';
 class SpecialDayBenefit extends Benefit {
   static title = '특별 할인';
 
-  static discountIncrement = -1000;
+  static discountIncrement = 1000;
 
   static specialDays = [3, 10, 17, 24, 25, 31];
 
