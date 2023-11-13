@@ -1,5 +1,4 @@
 import PromotionService from '../models/PromotionService.js';
-import MESSAGE from '../utils/constants/message.js';
 import View from '../views/View.js';
 
 class PromotionController {
@@ -8,15 +7,8 @@ class PromotionController {
   #promotionService = new PromotionService();
 
   async run() {
-    this.#view.printApplicationHeader();
-    await this.#ensureDateInput();
-    await this.#ensureOrdersInput();
-    const data = this.#promotionService.getReservationData();
-    this.#view.printPromotionHeader(data.date);
-    this.#view.printOrders(data.orders);
-    const result = this.#promotionService.applyDiscounter();
-    this.#view.printTotalPrice(result.totalPriceBeforeDiscount);
-    this.#view.printPromotionResult(result);
+    await this.#initializePromotionService();
+    this.#displayReservationResult();
   }
 
   async #retryOnFailure(callBack) {
@@ -40,6 +32,25 @@ class PromotionController {
       const orders = await this.#view.readOrders();
       this.#promotionService.setReservationOrders(orders);
     });
+  }
+
+  async #initializePromotionService() {
+    this.#view.printApplicationHeader();
+    await this.#ensureDateInput();
+    await this.#ensureOrdersInput();
+  }
+
+  #displayReservationResult() {
+    const reservationData = this.#promotionService.getReservationData();
+    this.#view.printPromotionHeader(reservationData.date);
+    this.#view.printOrders(reservationData.orders);
+    this.#displayPromotionResult();
+  }
+
+  #displayPromotionResult() {
+    const result = this.#promotionService.applyDiscounter();
+    this.#view.printTotalPrice(result.totalPriceBeforeDiscount);
+    this.#view.printPromotionResult(result);
   }
 }
 
