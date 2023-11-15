@@ -1,5 +1,6 @@
 import CustomError from '../../errors/CustomError.js';
 import ERROR from '../constants/error.js';
+import NUMBER from '../constants/number.js';
 import { MENU } from '../constants/string.js';
 
 const MenuValidator = {
@@ -9,7 +10,7 @@ const MenuValidator = {
     }
   },
   validateMenuCount(menuCount) {
-    if (menuCount > 20) {
+    if (menuCount > NUMBER.maxMenuCount || menuCount < NUMBER.minMenuCount) {
       throw CustomError.menu(ERROR.invalidOrder);
     }
   },

@@ -1,6 +1,7 @@
 import CustomError from '../../errors/CustomError.js';
 import DATE from '../constants/date.js';
 import ERROR from '../constants/error.js';
+import NUMBER from '../constants/number.js';
 import { MENU } from '../constants/string.js';
 
 const PromotionServiceValidator = {
@@ -22,7 +23,7 @@ const PromotionServiceValidator = {
       (total, [_menuName, count]) => total + count,
       0,
     );
-    if (totalCount > 20) {
+    if (totalCount > NUMBER.maxMenuCount || totalCount < NUMBER.minMenuCount) {
       throw CustomError.promotionService(ERROR.invalidOrder);
     }
   },

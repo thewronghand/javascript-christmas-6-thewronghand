@@ -55,11 +55,22 @@ describe('PromotionServiceValidator 테스트', () => {
       ).not.toThrow();
     });
 
-    it('갯수 총합이 20이 넘는 메뉴 배열 입력에 CustomError를 던져야 한다.', () => {
+    it('갯수 총합이 최대값이 넘는 메뉴 배열 입력에 CustomError를 던져야 한다.', () => {
       const menuArray = [
         ['해산물파스타', 8],
         ['초코케이크', 8],
         ['샴페인', 8],
+      ];
+      expect(() =>
+        PromotionServiceValidator.validateTotalOrderCount(menuArray),
+      ).toThrow(CustomError);
+    });
+
+    it('갯수 총합이 최소값 미만인 메뉴 배열 입력에 CustomError를 던져야 한다.', () => {
+      const menuArray = [
+        ['해산물파스타', 0],
+        ['초코케이크', 0],
+        ['샴페인', 0],
       ];
       expect(() =>
         PromotionServiceValidator.validateTotalOrderCount(menuArray),

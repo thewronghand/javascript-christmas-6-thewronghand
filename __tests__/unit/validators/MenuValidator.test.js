@@ -20,8 +20,13 @@ describe('MenuValidator 테스트', () => {
       expect(() => MenuValidator.validateMenuCount(input)).not.toThrow();
     });
 
-    it('20개를 초과하는 메뉴 입력에 CustomError를 던져야 한다.', () => {
+    it('최대값을 초과하는 메뉴 입력에 CustomError를 던져야 한다.', () => {
       const input = 25;
+      expect(() => MenuValidator.validateMenuCount(input)).toThrow(CustomError);
+    });
+
+    it('최소값 미만인 메뉴 입력에 CustomError를 던져야 한다.', () => {
+      const input = 0;
       expect(() => MenuValidator.validateMenuCount(input)).toThrow(CustomError);
     });
   });
