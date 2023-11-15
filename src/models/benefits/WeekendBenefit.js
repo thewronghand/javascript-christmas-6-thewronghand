@@ -17,7 +17,7 @@ class WeekendBenefit extends Benefit {
     discountAmount: 0,
   };
 
-  #isWeekday(date) {
+  #isWeekend(date) {
     return WeekendBenefit.weekends.includes(date.getDay());
   }
 
@@ -33,7 +33,7 @@ class WeekendBenefit extends Benefit {
   }
 
   apply(reservation) {
-    if (this.#isWeekday(reservation.date)) {
+    if (this.#isWeekend(reservation.date)) {
       this.#updateResult(reservation);
     }
     return this.#result;
