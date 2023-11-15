@@ -1,12 +1,12 @@
-import DATE from '../utils/constants/date.js';
-import PromotionServiceValidator from '../utils/validators/PromotionServiceValidator.js';
-import Discounter from './Discounter.js';
-import Menu from './Menu.js';
-import ComplimentaryBenefit from './benefits/ComplimentaryBenefit.js';
-import DDayBenefit from './benefits/DDayBenefit.js';
-import SpecialDayBenefit from './benefits/SpecialDayBenefit.js';
-import WeekdayBenefit from './benefits/WeekdayBenefit.js';
-import WeekendBenefit from './benefits/WeekendBenefit.js';
+import DATE from '../utils/constants/date';
+import PromotionServiceValidator from '../utils/validators/PromotionServiceValidator';
+import Discounter from './Discounter';
+import Menu from './Menu';
+import ComplimentaryBenefit from './benefits/ComplimentaryBenefit';
+import DDayBenefit from './benefits/DDayBenefit';
+import SpecialDayBenefit from './benefits/SpecialDayBenefit';
+import WeekdayBenefit from './benefits/WeekdayBenefit';
+import WeekendBenefit from './benefits/WeekendBenefit';
 
 class PromotionService {
   #reservation = {

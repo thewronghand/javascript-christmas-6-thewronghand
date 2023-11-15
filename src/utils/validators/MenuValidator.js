@@ -1,7 +1,7 @@
-import CustomError from '../../errors/CustomError.js';
-import ERROR from '../constants/error.js';
-import NUMBER from '../constants/number.js';
-import { MENU } from '../constants/string.js';
+import CustomError from '../../errors/CustomError';
+import ERROR from '../constants/error';
+import NUMBER from '../constants/number';
+import { MENU } from '../constants/string';
 
 const MenuValidator = {
   validateMenuName(menuName) {

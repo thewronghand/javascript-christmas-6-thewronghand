@@ -1,4 +1,4 @@
-import PromotionController from './controllers/PromotionController.js';
+import PromotionController from './controllers/PromotionController';
 
 class App {
   async run() {

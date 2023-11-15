@@ -1,5 +1,5 @@
-import PromotionService from '../models/PromotionService.js';
-import View from '../views/View.js';
+import PromotionService from '../models/PromotionService';
+import View from '../views/View';
 
 class PromotionController {
   #view = new View();

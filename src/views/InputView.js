@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import InputViewValidator from '../utils/validators/InputViewValidator.js';
-import { SYMBOLS } from '../utils/constants/string.js';
+import InputViewValidator from '../utils/validators/InputViewValidator';
+import { SYMBOLS } from '../utils/constants/string';
 
 const InputView = {
   async readNaturalNumber(queryMessage) {

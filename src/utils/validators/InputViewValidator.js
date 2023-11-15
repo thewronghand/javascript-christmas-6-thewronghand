@@ -1,6 +1,6 @@
-import CustomError from '../../errors/CustomError.js';
-import ERROR from '../constants/error.js';
-import { SYMBOLS } from '../constants/string.js';
+import CustomError from '../../errors/CustomError';
+import ERROR from '../constants/error';
+import { SYMBOLS } from '../constants/string';
 
 function validateInputLength(input, error) {
   if (!input.length) {

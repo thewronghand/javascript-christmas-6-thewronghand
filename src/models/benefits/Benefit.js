@@ -1,5 +1,5 @@
-import CustomError from '../../errors/CustomError.js';
-import ERROR from '../../utils/constants/error.js';
+import CustomError from '../../errors/CustomError';
+import ERROR from '../../utils/constants/error';
 
 class Benefit {
   constructor() {

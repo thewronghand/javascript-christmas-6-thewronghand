@@ -1,5 +1,5 @@
-import { MENU } from '../utils/constants/string.js';
-import MenuValidator from '../utils/validators/MenuValidator.js';
+import { MENU } from '../utils/constants/string';
+import MenuValidator from '../utils/validators/MenuValidator';
 
 class Menu {
   #name;

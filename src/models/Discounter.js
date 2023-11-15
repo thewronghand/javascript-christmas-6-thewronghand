@@ -1,6 +1,6 @@
-import MESSAGE from '../utils/constants/message.js';
-import NUMBER from '../utils/constants/number.js';
-import { BADGES } from '../utils/constants/string.js';
+import MESSAGE from '../utils/constants/message';
+import NUMBER from '../utils/constants/number';
+import { BADGES } from '../utils/constants/string';
 
 class Discounter {
   #benefits;
@@ -72,8 +72,7 @@ class Discounter {
 
   #setEventBadge() {
     const badge = BADGES.find(
-      ({ threshold, _badgeName }) =>
-        this.#result.totalBenefitAmount >= threshold,
+      item => this.#result.totalBenefitAmount >= item.threshold,
     );
     this.#result.eventBadge = badge.badgeName;
   }

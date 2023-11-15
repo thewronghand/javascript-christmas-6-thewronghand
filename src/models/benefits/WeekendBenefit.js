@@ -1,5 +1,5 @@
-import { MENU } from '../../utils/constants/string.js';
-import Benefit from './Benefit.js';
+import { MENU } from '../../utils/constants/string';
+import Benefit from './Benefit';
 
 class WeekendBenefit extends Benefit {
   static title = '주말 할인';

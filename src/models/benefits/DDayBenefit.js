@@ -1,5 +1,5 @@
-import DATE from '../../utils/constants/date.js';
-import Benefit from './Benefit.js';
+import DATE from '../../utils/constants/date';
+import Benefit from './Benefit';
 
 class DDayBenefit extends Benefit {
   static title = '크리스마스 디데이 할인';

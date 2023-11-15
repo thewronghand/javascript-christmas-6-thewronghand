@@ -1,8 +1,8 @@
-import CustomError from '../../errors/CustomError.js';
-import DATE from '../constants/date.js';
-import ERROR from '../constants/error.js';
-import NUMBER from '../constants/number.js';
-import { MENU } from '../constants/string.js';
+import CustomError from '../../errors/CustomError';
+import DATE from '../constants/date';
+import ERROR from '../constants/error';
+import NUMBER from '../constants/number';
+import { MENU } from '../constants/string';
 
 const PromotionServiceValidator = {
   validateDate(date) {

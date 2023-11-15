@@ -1,4 +1,4 @@
-import Benefit from './Benefit.js';
+import Benefit from './Benefit';
 
 class SpecialDayBenefit extends Benefit {
   static title = '특별 할인';

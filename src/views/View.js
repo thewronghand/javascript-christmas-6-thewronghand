@@ -1,7 +1,7 @@
-import MESSAGE from '../utils/constants/message.js';
-import { SYMBOLS } from '../utils/constants/string.js';
-import InputView from './InputView.js';
-import OutputView from './OutputView.js';
+import MESSAGE from '../utils/constants/message';
+import { SYMBOLS } from '../utils/constants/string';
+import InputView from './InputView';
+import OutputView from './OutputView';
 
 class View {
   #inputView = InputView;

@@ -1,5 +1,5 @@
-import { MENU } from '../../utils/constants/string.js';
-import Benefit from './Benefit.js';
+import { MENU } from '../../utils/constants/string';
+import Benefit from './Benefit';
 
 class ComplimentaryBenefit extends Benefit {
   static title = '증정 이벤트';
