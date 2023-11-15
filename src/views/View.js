@@ -42,9 +42,7 @@ class View {
   }
 
   printPromotionHeader(date) {
-    this.#outputView.print(
-      MESSAGE.header.benefitAnnouncement(date) + SYMBOLS.newLine,
-    );
+    this.#outputView.printWithNewLine(MESSAGE.header.benefitAnnouncement(date));
   }
 
   printOrders(orders) {
@@ -55,12 +53,12 @@ class View {
         return MESSAGE.format.menu(info.menuName, info.count);
       })
       .join(SYMBOLS.newLine);
-    this.#outputView.print(orderMessage + SYMBOLS.newLine);
+    this.#outputView.printWithNewLine(orderMessage);
   }
 
   printTotalPrice(totalPrice) {
     this.#outputView.print(MESSAGE.header.totalPriceBeforeDiscount);
-    this.#outputView.print(MESSAGE.format.price(totalPrice) + SYMBOLS.newLine);
+    this.#outputView.printWithNewLine(MESSAGE.format.price(totalPrice));
   }
 
   printPromotionResult(result) {
@@ -78,7 +76,7 @@ class View {
           .map(([menuName, count]) => MESSAGE.format.menu(menuName, count))
           .join(SYMBOLS.newLine)
       : MESSAGE.none;
-    this.#outputView.print(giftsMessage + SYMBOLS.newLine);
+    this.#outputView.printWithNewLine(giftsMessage);
   }
 
   #parseBenefitDetailsMessage(appliedBenefits) {
@@ -95,21 +93,19 @@ class View {
   #printBenefitDetails(appliedBenefits) {
     this.#outputView.print(MESSAGE.header.benefitDetails);
     const benefitMessage = this.#parseBenefitDetailsMessage(appliedBenefits);
-    this.#outputView.print(benefitMessage + SYMBOLS.newLine);
+    this.#outputView.printWithNewLine(benefitMessage);
   }
 
   #printTotalBenefitAmount(totalBenefitAmount) {
     this.#outputView.print(MESSAGE.header.totalBenefitAmount);
-    this.#outputView.print(
-      MESSAGE.format.discount(totalBenefitAmount) + SYMBOLS.newLine,
+    this.#outputView.printWithNewLine(
+      MESSAGE.format.discount(totalBenefitAmount),
     );
   }
 
   #printExpectedTotalPrice(expectedTotalPrice) {
     this.#outputView.print(MESSAGE.header.expectedPaymentAfterDiscount);
-    this.#outputView.print(
-      MESSAGE.format.price(expectedTotalPrice) + SYMBOLS.newLine,
-    );
+    this.#outputView.printWithNewLine(MESSAGE.format.price(expectedTotalPrice));
   }
 
   #printEventBadge(eventBadge) {
