@@ -10,7 +10,7 @@ import WeekendBenefit from './benefits/WeekendBenefit.js';
 
 class PromotionService {
   #reservation = {
-    date: new Date(DATE.year, DATE.month, 1),
+    date: DATE.defaultDate,
     orders: [],
     totalPrice: 0,
   };
