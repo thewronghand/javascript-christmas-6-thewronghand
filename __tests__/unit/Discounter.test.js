@@ -30,33 +30,47 @@ describe('Discounter 테스트', () => {
     const discounter = new Discounter(benefits);
     discounter.applyAllBenefits(reservation);
     const result = discounter.getDiscountResult();
-    console.log(result);
     const expectedResult = {
-      gifts: [{ category: '음료', name: '샴페인', price: 25000 }],
+      gifts: [['샴페인', 1]],
       totalPriceBeforeDiscount: 142000,
       totalBenefitAmount: 31246,
       totalDiscountAmount: 31246 - 25000,
       expectedTotalPrice: 135754,
-      applyAllBenefits: Array(4),
+      appliedBenefits: [
+        {
+          title: '크리스마스 디데이 할인',
+          isApplied: true,
+          benefitAmount: 1200,
+          discountAmount: 1200,
+        },
+        {
+          title: '평일 할인',
+          isApplied: true,
+          benefitAmount: 4046,
+          discountAmount: 4046,
+        },
+        {
+          title: '특별 할인',
+          isApplied: true,
+          benefitAmount: 1000,
+          discountAmount: 1000,
+        },
+        {
+          title: '증정 이벤트',
+          isApplied: true,
+          benefitAmount: 25000,
+          discountAmount: 0,
+          giftItem: {
+            category: '음료',
+            name: '샴페인',
+            price: 25000,
+          },
+          giftCount: 1,
+        },
+      ],
       eventBadge: '산타',
     };
 
-    expect(result.gifts.length).toEqual(expectedResult.gifts.length);
-    expect(result.totalPriceBeforeDiscount).toEqual(
-      expectedResult.totalPriceBeforeDiscount,
-    );
-    expect(result.totalBenefitAmount).toEqual(
-      expectedResult.totalBenefitAmount,
-    );
-    expect(result.totalDiscountAmount).toEqual(
-      expectedResult.totalDiscountAmount,
-    );
-    expect(result.expectedTotalPrice).toEqual(
-      expectedResult.expectedTotalPrice,
-    );
-    expect(result.appliedBenefits.length).toEqual(
-      expectedResult.applyAllBenefits.length,
-    );
-    expect(result.eventBadge).toEqual(expectedResult.eventBadge);
+    expect(result).toEqual(expectedResult);
   });
 });
