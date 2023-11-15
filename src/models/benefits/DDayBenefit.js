@@ -19,13 +19,13 @@ class DDayBenefit extends Benefit {
     discountAmount: 0,
   };
 
-  calculateDaysUntilDDay(date) {
+  #calculateDaysUntilDDay(date) {
     const timeDiff = DDayBenefit.dDay.getTime() - date.getTime();
     const daysUntilDDay = Math.ceil(timeDiff / DDayBenefit.msPerDay);
     return daysUntilDDay;
   }
 
-  calculateDiscountAmount(daysUntilDDay) {
+  #calculateDiscountAmount(daysUntilDDay) {
     if (daysUntilDDay >= 0) {
       return (
         DDayBenefit.initialDiscount +
@@ -37,7 +37,7 @@ class DDayBenefit extends Benefit {
   }
 
   apply(reservation) {
-    const daysUntilDDay = this.calculateDaysUntilDDay(reservation.date);
+    const daysUntilDDay = this.#calculateDaysUntilDDay(reservation.date);
     if (daysUntilDDay >= 0) {
       this.#updateResult(daysUntilDDay);
     }
@@ -46,7 +46,7 @@ class DDayBenefit extends Benefit {
 
   #updateResult(reservation, daysUntilDDay) {
     this.#result.isApplied = true;
-    this.#result.benefitAmount = this.calculateDiscountAmount(
+    this.#result.benefitAmount = this.#calculateDiscountAmount(
       reservation,
       daysUntilDDay,
     );
