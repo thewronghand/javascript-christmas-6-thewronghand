@@ -20,7 +20,7 @@ class Discounter {
   }
 
   applyAllBenefits(reservation) {
-    if (this.#result.totalPriceBeforeDiscount < NUMBER.benefitThreshold) {
+    if (reservation.totalPrice < NUMBER.benefitThreshold) {
       return;
     }
     this.#result.totalPriceBeforeDiscount = reservation.totalPrice;
