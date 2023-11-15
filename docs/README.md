@@ -121,8 +121,8 @@
     - [x] WeekDayBenefit 테스트 : 적용, 미적용 테스트, 할인조건은 일치하지만 할인 적용이 안되는 경우 검증
     - [x] WeekendBenefit 테스트 : 적용, 미적용 테스트, 할인조건은 일치하지만 할인 적용이 안되는 경우 검증
 
-  - [ ] Discounter 테스트
-  - [ ] Menu 테스트
+  - [x] Discounter 테스트
+  - [x] Menu 테스트
   - [ ] PromotionService 테스트
 
 - [ ] **통합 테스트**
