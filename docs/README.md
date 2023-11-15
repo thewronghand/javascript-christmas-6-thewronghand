@@ -121,10 +121,10 @@
     - [x] WeekDayBenefit 테스트 : 적용, 미적용 테스트, 할인조건은 일치하지만 할인 적용이 안되는 경우 검증
     - [x] WeekendBenefit 테스트 : 적용, 미적용 테스트, 할인조건은 일치하지만 할인 적용이 안되는 경우 검증
 
-  - [x] Discounter 테스트
-  - [x] Menu 테스트
-  - [x] PromotionService 테스트
+  - [x] Discounter 테스트 : 주어진 조건에서 예상한 결과를 반환하는지 테스트
+  - [x] Menu 테스트 : 메서드에 대한 예상 동작 테스트
+  - [x] PromotionService 테스트 : 유효성 검사, 결과 반환 테스트
 
-- [ ] **통합 테스트**
-  - [x] PromotionService - Discounter 통합 테스트
-  - [ ] PromotionController - PromotionService - View 통합 테스트
+- [x] **통합 테스트**
+  - [x] PromotionService - Discounter 통합 테스트 : 주어진 조건에서 예상한 결과를 반환하는지 테스트
+  - [x] PromotionController - PromotionService - View 통합 테스트 : 여러 예제 조건에서 예상한 결과를 반환받아 출력하는지 테스트
