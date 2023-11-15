@@ -1,9 +1,17 @@
+import CustomError from '../../src/errors/CustomError';
 import Menu from '../../src/models/Menu';
+import Benefit from '../../src/models/benefits/Benefit';
 import ComplimentaryBenefit from '../../src/models/benefits/ComplimentaryBenefit';
 import DDayBenefit from '../../src/models/benefits/DDayBenefit';
 import SpecialDayBenefit from '../../src/models/benefits/SpecialDayBenefit';
 import WeekdayBenefit from '../../src/models/benefits/WeekdayBenefit';
 import WeekendBenefit from '../../src/models/benefits/WeekendBenefit';
+
+describe('Benefit 추상 클래스 테스트', () => {
+  it('인스턴스 생성 시 CustomError를 던져야 한다', () => {
+    expect(() => new Benefit()).toThrow(CustomError);
+  });
+});
 
 describe('Benefit 서브클래스 테스트', () => {
   describe('ComplimentaryBenefit 테스트', () => {
