@@ -15,15 +15,16 @@ class Discounter {
     eventBadge: MESSAGE.none,
   };
 
-  constructor(benefits) {
+  constructor(totalPrice, benefits) {
+    this.#result.totalPriceBeforeDiscount = totalPrice;
+    this.#result.expectedTotalPrice = totalPrice;
     this.#benefits = benefits;
   }
 
   applyAllBenefits(reservation) {
-    if (reservation.totalPrice < NUMBER.benefitThreshold) {
+    if (this.#result.totalPriceBeforeDiscount < NUMBER.benefitThreshold) {
       return;
     }
-    this.#result.totalPriceBeforeDiscount = reservation.totalPrice;
     this.#calculateDiscountResult(reservation);
     this.#setEventBadge();
     this.#setGiftResult();

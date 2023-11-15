@@ -27,7 +27,7 @@ describe('Discounter 테스트', () => {
       totalPrice: 142000,
     };
 
-    const discounter = new Discounter(benefits);
+    const discounter = new Discounter(reservation.totalPrice, benefits);
     discounter.applyAllBenefits(reservation);
     const result = discounter.getDiscountResult();
     const expectedResult = {
