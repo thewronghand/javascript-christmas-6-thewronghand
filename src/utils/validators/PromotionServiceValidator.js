@@ -1,6 +1,7 @@
 import CustomError from '../../errors/CustomError.js';
 import DATE from '../constants/date.js';
 import ERROR from '../constants/error.js';
+import { MENU } from '../constants/string.js';
 
 const PromotionServiceValidator = {
   validateDate(date) {
@@ -22,6 +23,13 @@ const PromotionServiceValidator = {
       0,
     );
     if (totalCount > 20) {
+      throw CustomError.promotionService(ERROR.invalidOrder);
+    }
+  },
+
+  validateDrinkOnlyOrder(orderMenus) {
+    const categories = orderMenus.map(item => item.getCategory());
+    if (categories.every(item => item === MENU.menuCategories.drink)) {
       throw CustomError.promotionService(ERROR.invalidOrder);
     }
   },

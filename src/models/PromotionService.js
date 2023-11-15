@@ -34,14 +34,16 @@ class PromotionService {
     this.#reservation.date = new Date(DATE.year, DATE.month, date);
   }
 
-  #validateReservationOrders(orders) {
+  #validateReservationOrders(orders, orderMenus) {
     PromotionServiceValidator.validateOrderNameDuplicate(orders);
     PromotionServiceValidator.validateTotalOrderCount(orders);
+    PromotionServiceValidator.validateDrinkOnlyOrder(orderMenus);
   }
 
   updateReservationWithOrders(orders) {
-    this.#validateReservationOrders(orders);
-    this.#reservation.orders = this.#setUpOrdersFromInput(orders);
+    const orderMenus = this.#setUpOrdersFromInput(orders);
+    this.#validateReservationOrders(orders, orderMenus);
+    this.#reservation.orders = orderMenus;
     this.#updateTotalPrice();
   }
 
