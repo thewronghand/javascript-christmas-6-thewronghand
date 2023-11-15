@@ -7,29 +7,33 @@ import WeekdayBenefit from '../../src/models/benefits/WeekdayBenefit';
 import WeekendBenefit from '../../src/models/benefits/WeekendBenefit';
 
 describe('Discounter 테스트', () => {
-  it('기능 테스트', () => {
-    const benefits = [
+  let benefits, reservation, discounter;
+
+  beforeAll(() => {
+    benefits = [
       new DDayBenefit(),
       new WeekdayBenefit(),
       new WeekendBenefit(),
       new SpecialDayBenefit(),
       new ComplimentaryBenefit(),
     ];
-
-    const reservation = {
+    reservation = {
       date: new Date(2023, 11, 3),
       orders: [
-        new Menu(['티본스테이크', 1]),
-        new Menu(['바비큐립', 1]),
-        new Menu(['초코케이크', 2]),
-        new Menu(['제로콜라', 1]),
-      ],
+        ['티본스테이크', 1],
+        ['바비큐립', 1],
+        ['초코케이크', 2],
+        ['제로콜라', 1],
+      ].map(item => new Menu(item)),
       totalPrice: 142000,
     };
+    discounter = new Discounter(reservation.totalPrice, benefits);
+  });
 
-    const discounter = new Discounter(reservation.totalPrice, benefits);
+  it('기능 테스트', () => {
     discounter.applyAllBenefits(reservation);
     const result = discounter.getDiscountResult();
+
     const expectedResult = {
       gifts: [['샴페인', 1]],
       totalPriceBeforeDiscount: 142000,
