@@ -41,11 +41,17 @@ class View {
     this.#outputView.print(MESSAGE.header.application);
   }
 
-  printPromotionHeader(date) {
+  printReservationResult(reservation) {
+    this.#printPromotionHeader(reservation.date);
+    this.#printOrders(reservation.orders);
+    this.#printTotalPrice(reservation.totalPrice);
+  }
+
+  #printPromotionHeader(date) {
     this.#outputView.printWithNewLine(MESSAGE.header.benefitAnnouncement(date));
   }
 
-  printOrders(orders) {
+  #printOrders(orders) {
     this.#outputView.print(MESSAGE.header.orders);
     const orderMessage = orders
       .map(item => {
@@ -56,7 +62,7 @@ class View {
     this.#outputView.printWithNewLine(orderMessage);
   }
 
-  printTotalPrice(totalPrice) {
+  #printTotalPrice(totalPrice) {
     this.#outputView.print(MESSAGE.header.totalPriceBeforeDiscount);
     this.#outputView.printWithNewLine(MESSAGE.format.price(totalPrice));
   }

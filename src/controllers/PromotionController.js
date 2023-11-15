@@ -42,14 +42,12 @@ class PromotionController {
 
   #displayReservationResult() {
     const reservationData = this.#promotionService.getReservationData();
-    this.#view.printPromotionHeader(reservationData.date);
-    this.#view.printOrders(reservationData.orders);
+    this.#view.printReservationResult(reservationData);
     this.#displayPromotionResult();
   }
 
   #displayPromotionResult() {
     const result = this.#promotionService.applyDiscounter();
-    this.#view.printTotalPrice(result.totalPriceBeforeDiscount);
     this.#view.printPromotionResult(result);
   }
 }
