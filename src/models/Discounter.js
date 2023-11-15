@@ -15,8 +15,7 @@ class Discounter {
     eventBadge: MESSAGE.none,
   };
 
-  constructor(reservation, benefits) {
-    this.#result.totalPriceBeforeDiscount = reservation.totalPrice;
+  constructor(benefits) {
     this.#benefits = benefits;
   }
 
@@ -24,6 +23,7 @@ class Discounter {
     if (this.#result.totalPriceBeforeDiscount < NUMBER.benefitThreshold) {
       return;
     }
+    this.#result.totalPriceBeforeDiscount = reservation.totalPrice;
     this.#calculateDiscountResult(reservation);
     this.#setEventBadge();
     this.#setGiftResult();

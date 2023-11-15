@@ -56,7 +56,7 @@ class PromotionService {
   }
 
   applyDiscounter() {
-    this.#discounter = new Discounter(this.#reservation, this.#benefits);
+    this.#discounter = new Discounter(this.#benefits);
     this.#discounter.applyAllBenefits(this.#reservation);
     return this.#discounter.getDiscountResult();
   }
