@@ -52,7 +52,7 @@ class View {
     const orderMessage = orders
       .map(item => {
         const info = item.getMenuInfo();
-        return MESSAGE.format.menu(info);
+        return MESSAGE.format.menu(info.menuName, info.count);
       })
       .join(SYMBOLS.newLine);
     this.#outputView.print(orderMessage + SYMBOLS.newLine);
