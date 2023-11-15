@@ -107,7 +107,7 @@
 
 ### 📝 테스트 작성 목록
 
-- [ ] **유닛 테스트**
+- [x] **유닛 테스트**
 
   - [x] validator 테스트 : 유효성 검사기가 예상대로 동작하는지 검증
     - [x] InputViewValidator 테스트
@@ -123,8 +123,8 @@
 
   - [x] Discounter 테스트
   - [x] Menu 테스트
-  - [ ] PromotionService 테스트
+  - [x] PromotionService 테스트
 
 - [ ] **통합 테스트**
-  - [ ] PromotionService - Discounter 통합 테스트
+  - [x] PromotionService - Discounter 통합 테스트
   - [ ] PromotionController - PromotionService - View 통합 테스트
