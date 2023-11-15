@@ -1,4 +1,5 @@
 import CustomError from '../../../src/errors/CustomError';
+import Menu from '../../../src/models/Menu';
 import PromotionServiceValidator from '../../../src/utils/validators/PromotionServiceValidator';
 
 describe('PromotionServiceValidator 테스트', () => {
@@ -62,6 +63,33 @@ describe('PromotionServiceValidator 테스트', () => {
       ];
       expect(() =>
         PromotionServiceValidator.validateTotalOrderCount(menuArray),
+      ).toThrow(CustomError);
+    });
+  });
+
+  describe('validateDrinkOnlyOrder 메서드', () => {
+    it('음료만으로 구성되지 않은 주문에 예외를 던지지 않아야 한다.', () => {
+      const menuArray = [
+        ['타파스', 3],
+        ['샴페인', 6],
+      ];
+
+      const menus = menuArray.map(item => new Menu(item));
+      expect(() =>
+        PromotionServiceValidator.validateDrinkOnlyOrder(menus),
+      ).not.toThrow();
+    });
+
+    it('음료만으로 구성된 주문에 CustomError를 던져야 한다.', () => {
+      const menuArray = [
+        ['제로콜라', 3],
+        ['샴페인', 6],
+      ];
+
+      const menus = menuArray.map(item => new Menu(item));
+
+      expect(() =>
+        PromotionServiceValidator.validateDrinkOnlyOrder(menus),
       ).toThrow(CustomError);
     });
   });
